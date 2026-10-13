@@ -2,9 +2,9 @@
 <html lang="tr" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyi ki Doğdun Kuzey! | 13.10.2011</title>
-    <!-- Tailwind CSS CDN -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>İyi ki Doğdun Kuzey! | 13 Ekim 2011</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,310 +12,1218 @@
             theme: {
                 extend: {
                     colors: {
-                        glassDark: 'rgba(15, 23, 42, 0.65)',
-                        glassLight: 'rgba(255, 255, 255, 0.05)',
+                        cyberDark: '#070a12',
+                        glassBg: 'rgba(18, 25, 45, 0.55)',
+                        glassBorder: 'rgba(255, 255, 255, 0.12)',
+                        neonCyan: '#00f3ff',
+                        neonPurple: '#b026ff',
+                        neonGold: '#ffd700',
+                        neuDark: '#0b101d',
+                        neuLight: '#18223c'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
                     }
                 }
             }
         }
     </script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         * {
-            font-family: 'Plus Jakarta Sans', sans-serif;
             box-sizing: border-box;
             user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
         }
 
-        h1, h2, h3, .heading-font {
+        body {
+            background-color: #050811;
+            color: #f1f5f9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, .font-display {
             font-family: 'Outfit', sans-serif;
         }
 
-        /* Neu-Glass Fusion Core Styles */
-        .neu-glass {
+        /* Glassmorphism Styles */
+        .glass-panel {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 
-                20px 20px 50px rgba(0, 0, 0, 0.6),
-                -10px -10px 30px rgba(255, 255, 255, 0.03),
-                inset 1px 1px 2px rgba(255, 255, 255, 0.2),
-                inset -1px -1px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
         }
 
+        .glass-panel-interactive {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .glass-panel-interactive:hover {
+            border-color: rgba(0, 243, 255, 0.3);
+            box-shadow: 0 25px 60px rgba(0, 243, 255, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Neumorphism Dual Shadow Elements */
         .neu-button {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
+            background: linear-gradient(145deg, #121a2f, #0a0e1a);
             box-shadow: 
-                8px 8px 20px rgba(0, 0, 0, 0.5),
-                -6px -6px 16px rgba(255, 255, 255, 0.04),
-                inset 1px 1px 2px rgba(255, 255, 255, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                8px 8px 18px rgba(0, 0, 0, 0.6),
+                -6px -6px 14px rgba(255, 255, 255, 0.04),
+                inset 1px 1px 1px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
         }
 
         .neu-button:hover {
-            box-shadow: 
-                10px 10px 25px rgba(0, 0, 0, 0.7),
-                -8px -8px 20px rgba(255, 255, 255, 0.06),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.2),
-                inset -2px -2px 4px rgba(0, 0, 0, 0.7);
             transform: translateY(-2px);
+            box-shadow: 
+                10px 10px 22px rgba(0, 0, 0, 0.7),
+                -8px -8px 18px rgba(255, 255, 255, 0.06),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.2);
         }
 
-        .neu-button:active {
+        .neu-button:active, .neu-button.active {
+            transform: translateY(1px);
             box-shadow: 
                 inset 4px 4px 10px rgba(0, 0, 0, 0.8),
                 inset -4px -4px 10px rgba(255, 255, 255, 0.05);
-            transform: translateY(1px);
         }
 
-        /* Ambient Animated Background Blobs */
-        .blob {
+        .neu-inset {
+            background: #080c16;
+            box-shadow: 
+                inset 5px 5px 12px rgba(0, 0, 0, 0.8),
+                inset -4px -4px 10px rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom Glow and Animations */
+        .text-glow-cyan {
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+        }
+        .text-glow-gold {
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+        .text-glow-purple {
+            text-shadow: 0 0 15px rgba(176, 38, 255, 0.6);
+        }
+
+        /* Candle Flames */
+        .candle-flame {
+            background: radial-gradient(ellipse at bottom, #ffeb3b 0%, #ff9800 50%, #f44336 100%);
+            box-shadow: 0 0 15px #ff9800, 0 0 30px #ffeb3b;
+            border-radius: 50% 50% 20% 20%;
+            transform-origin: center bottom;
+            animation: flicker 0.1s infinite alternate ease-in-out;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); }
+            100% { transform: scale(1.1, 0.95) rotate(2deg); }
+        }
+
+        .candle-smoke {
             position: absolute;
-            filter: blur(90px);
-            z-index: -1;
-            opacity: 0.6;
-            animation: floatBlob 12s infinite alternate ease-in-out;
-        }
-
-        @keyframes floatBlob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(50px, -60px) scale(1.15); }
-            100% { transform: translate(-40px, 40px) scale(0.9); }
-        }
-
-        /* Card 3D Tilt Effect Container */
-        .tilt-card {
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
+            background: rgba(200, 200, 200, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: smokeRise 1.5s forwards ease-out;
         }
-        ::-webkit-scrollbar-track {
-            background: #090d16;
+
+        @keyframes smokeRise {
+            0% { opacity: 0.8; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-40px) scale(3); filter: blur(4px); }
         }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 4px;
+
+        /* 3D Tilt Card Container */
+        .tilt-container {
+            transform-style: preserve-3d;
+            perspective: 1200px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .tilt-child {
+            transform: translateZ(40px);
         }
+
+        /* Canvas Overlay layers */
+        canvas.layer-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        canvas.layer-fg { position: fixed; inset: 0; pointer-events: none; z-index: 40; }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #070a12; }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 243, 255, 0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 243, 255, 0.5); }
     </style>
 </head>
-<body class="bg-[#070a13] text-slate-100 min-h-screen flex flex-col items-center justify-center overflow-x-hidden relative selection:bg-cyan-500 selection:text-black">
+<body class="relative min-h-screen pb-16">
 
-    <!-- Background Ambient Glowing Orbs -->
-    <div class="blob w-[500px] h-[500px] bg-indigo-600/40 rounded-full top-[-10%] left-[-10%]"></div>
-    <div class="blob w-[600px] h-[600px] bg-cyan-600/30 rounded-full bottom-[-15%] right-[-10%]" style="animation-delay: -4s;"></div>
-    <div class="blob w-[400px] h-[400px] bg-purple-600/30 rounded-full top-[35%] right-[20%]" style="animation-delay: -8s;"></div>
+    <!-- Canvas Systems -->
+    <canvas id="canvas-orbit" class="layer-bg"></canvas>
+    <canvas id="canvas-confetti" class="layer-fg"></canvas>
+    <canvas id="canvas-fireworks" class="layer-fg"></canvas>
 
-    <!-- Hidden YouTube Audio Loop Frame ("Bad Boys" Theme) -->
-    <div id="audio-container" class="fixed opacity-0 pointer-events-none">
-        <iframe width="100" height="100" src="https://www.youtube.com/embed/THh5ykVxpSg?autoplay=1&loop=1&playlist=THh5ykVxpSg&enablejsapi=1" title="Bad Boys Theme" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    <!-- Ambient Glowing Orbs -->
+    <div class="fixed top-[-100px] left-[-100px] w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed top-[40%] right-[10%] w-80 h-80 bg-blue-600/15 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+    <!-- YouTube Hidden Frame for Audio Playback -->
+    <div id="youtube-audio-container" class="fixed -top-[9999px] -left-[9999px] pointer-events-none">
+        <div id="youtube-player"></div>
     </div>
 
-    <!-- Main Container -->
-    <main class="w-full max-w-4xl px-4 py-8 z-10 flex flex-col items-center">
+    <!-- Main Content Container -->
+    <div class="relative z-10 max-w-6xl mx-auto px-4 pt-6 space-y-10">
 
-        <!-- Top Floating Music Controller / Status Badge -->
-        <div class="neu-glass px-6 py-3 rounded-full flex items-center gap-4 mb-8 border border-white/10 shadow-2xl animate-pulse">
-            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_12px_#22d3ee]"></div>
-            <span class="text-xs sm:text-sm font-semibold tracking-wider text-cyan-300 uppercase">🎵 Bad Boys (Theme Loop) Aktif</span>
-            <button onclick="toggleAudio()" id="audio-btn" class="text-xs bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full transition cursor-pointer">
-                <i class="fa-solid fa-volume-high mr-1"></i> Ses Aç/Kapat
-            </button>
+        <!-- Header & Glass Music Player -->
+        <header class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-6 border-cyan-500/20">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl neu-button flex items-center justify-center text-cyan-400 text-2xl font-bold shadow-lg">
+                    15
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span class="text-xs font-semibold tracking-wider text-cyan-400 uppercase">Kuzey's Birthday Portal</span>
+                    </div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">13 Ekim 2011 — Doğum Günü Özel</h1>
+                </div>
+            </div>
+
+            <!-- YouTube Custom Audio Control Center -->
+            <div class="w-full md:w-auto neu-inset rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center gap-4">
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <button id="btn-play-pause" onclick="AudioController.togglePlay()" class="w-12 h-12 rounded-xl neu-button flex items-center justify-center text-cyan-400 hover:text-cyan-300 cursor-pointer">
+                        <i id="icon-play-pause" class="fa-solid fa-play text-lg"></i>
+                    </button>
+                    <div class="overflow-hidden">
+                        <div class="text-xs font-bold text-white tracking-wide truncate max-w-[160px]">Bad Boys (Theme)</div>
+                        <div id="audio-status-text" class="text-[10px] text-slate-400 font-mono">Müzik Yükleniyor...</div>
+                    </div>
+                </div>
+
+                <!-- Visualizer Spectrum Simulation -->
+                <canvas id="canvas-visualizer" width="120" height="36" class="rounded-lg bg-black/40 border border-white/5"></canvas>
+
+                <!-- Audio Sliders & Controls -->
+                <div class="flex items-center gap-3 w-full sm:w-auto justify-between">
+                    <button onclick="AudioController.toggleMute()" id="btn-mute" class="text-slate-400 hover:text-white transition">
+                        <i id="icon-mute" class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <input type="range" id="slider-volume" min="0" max="100" value="80" oninput="AudioController.setVolume(this.value)" class="w-20 accent-cyan-400 cursor-pointer">
+                    <button onclick="AudioController.restartTrack()" class="text-slate-400 hover:text-cyan-400 text-xs px-2 py-1 rounded neu-button">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section: 3D Tilt Card & Live Banner -->
+        <section class="tilt-container">
+            <div id="hero-tilt-card" class="glass-panel glass-panel-interactive rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden border border-white/15">
+                
+                <!-- Decorative Top Ambient Line -->
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+
+                <div class="tilt-child space-y-6">
+                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full neu-inset text-cyan-300 text-xs sm:text-sm font-bold tracking-wider uppercase border border-cyan-500/20">
+                        <i class="fa-solid fa-crown text-amber-400"></i> Bugün Senin Günün Kuzey
+                    </div>
+
+                    <h1 class="text-4xl sm:text-7xl font-black tracking-tight text-white leading-none">
+                        İYİ Kİ DOĞDUN <br>
+                        <span class="bg-gradient-to-r from-cyan-400 via-purple-400 to-amber-300 bg-clip-text text-transparent text-glow-cyan">
+                            KUZEY!
+                        </span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+                        15 yıllık macera, sonsuz potansiyel! 13 Ekim 2011'de başlayan bu efsane yolculukta yeni yaşının sana tüm hayallerini getirmesini diliyoruz.
+                    </p>
+
+                    <!-- Quick Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                        <button onclick="FireworksEngine.burstGroup()" class="neu-button px-8 py-4 rounded-2xl text-cyan-300 font-extrabold tracking-wide flex items-center gap-3 border border-cyan-500/30 text-sm sm:text-base cursor-pointer">
+                            <i class="fa-solid fa-rocket text-cyan-400 animate-bounce"></i> Havai Fişek Şöleni!
+                        </button>
+                        <button onclick="ConfettiEngine.launchConfettiStorm()" class="neu-button px-8 py-4 rounded-2xl text-purple-300 font-extrabold tracking-wide flex items-center gap-3 border border-purple-500/30 text-sm sm:text-base cursor-pointer">
+                            <i class="fa-solid fa-sparkles text-purple-400"></i> Konfeti Fırtınası
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive 15-Candle Birthday Cake Section -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-10 border-amber-500/20 relative overflow-hidden">
+            <div class="text-center max-w-xl mx-auto mb-8 space-y-2">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-cake-candles text-amber-400"></i>
+                    İnteraktif 15 Yaş Pastası
+                </h2>
+                <p class="text-slate-400 text-xs sm:text-sm">
+                    Mumları tek tek tıklayarak SÖNDÜR veya mikrofon izni verip ekrana üfleyerek mumları üfle!
+                </p>
+                <div class="pt-2">
+                    <button id="btn-mic-enable" onclick="CandleSystem.enableMicrophone()" class="neu-button px-4 py-2 rounded-xl text-xs font-bold text-amber-300 hover:text-amber-200 cursor-pointer">
+                        <i class="fa-solid fa-microphone mr-1.5"></i> Mikrofonla Üflemeyi Etkinleştir
+                    </button>
+                    <span id="mic-status-badge" class="hidden text-xs text-emerald-400 font-mono ml-2">✓ Mikrofon Dinleniyor...</span>
+                </div>
+            </div>
+
+            <!-- Cake Container -->
+            <div class="relative w-full max-w-lg mx-auto py-8 flex flex-col items-center">
+                <!-- Candles Grid Area -->
+                <div id="candles-container" class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-2 z-20 min-h-[70px] px-4">
+                    <!-- 15 Candles injected dynamically via JS -->
+                </div>
+
+                <!-- Cake Layers -->
+                <div class="w-full max-w-md relative flex flex-col items-center">
+                    <!-- Top Frosting Layer -->
+                    <div class="w-4/5 h-12 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-t-3xl shadow-lg border-t border-white/30 relative flex items-center justify-around overflow-hidden">
+                        <div class="w-6 h-6 rounded-full bg-white/30 -mb-4"></div>
+                        <div class="w-6 h-6 rounded-full bg-white/30 -mb-4"></div>
+                        <div class="w-6 h-6 rounded-full bg-white/30 -mb-4"></div>
+                        <div class="w-6 h-6 rounded-full bg-white/30 -mb-4"></div>
+                        <div class="w-6 h-6 rounded-full bg-white/30 -mb-4"></div>
+                    </div>
+                    <!-- Middle Sponge Layer -->
+                    <div class="w-11/12 h-16 neu-inset border-t-0 border-x border-white/10 flex items-center justify-center relative">
+                        <span class="text-xl sm:text-2xl font-black tracking-widest text-white/90 font-display">KUZEY 15</span>
+                    </div>
+                    <!-- Bottom Base Layer -->
+                    <div class="w-full h-20 bg-gradient-to-r from-slate-800 via-indigo-950 to-slate-800 rounded-b-3xl border border-white/10 shadow-2xl flex items-center justify-center">
+                        <div class="text-xs text-slate-400 tracking-widest uppercase">13.10.2011 • MUTLU YILLAR</div>
+                    </div>
+                    <!-- Plate -->
+                    <div class="w-[115%] h-5 bg-gradient-to-r from-slate-400 via-slate-100 to-slate-400 rounded-full -mt-2 shadow-2xl border border-white/40"></div>
+                </div>
+
+                <!-- Cake Controls -->
+                <div class="mt-8 flex items-center gap-4">
+                    <button onclick="CandleSystem.relightAll()" class="neu-button px-5 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white cursor-pointer">
+                        <i class="fa-solid fa-fire text-amber-400 mr-1.5"></i> Mumları Yeniden Yak
+                    </button>
+                    <span id="candles-counter" class="text-xs font-bold text-cyan-400 neu-inset px-4 py-2 rounded-xl">
+                        15 / 15 Yanıyor
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Time Capsule Engine -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-8 border-cyan-500/20 space-y-6">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-cyan-400"></i>
+                        Kuzey'in Canlı Zaman Kapsülü
+                    </h3>
+                    <p class="text-slate-400 text-xs sm:text-sm">13 Ekim 2011'den bu yana geçen gerçek zaman istatistikleri</p>
+                </div>
+                <div class="neu-inset px-4 py-1.5 rounded-full text-xs font-mono text-cyan-300">
+                    Süreksiz Akış Aktif
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="neu-inset p-4 rounded-2xl text-center">
+                    <div id="stat-years" class="text-2xl sm:text-3xl font-black text-cyan-400 font-display">15</div>
+                    <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-1">Yıl</div>
+                </div>
+                <div class="neu-inset p-4 rounded-2xl text-center">
+                    <div id="stat-days" class="text-2xl sm:text-3xl font-black text-purple-400 font-display">5,478</div>
+                    <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-1">Gün</div>
+                </div>
+                <div class="neu-inset p-4 rounded-2xl text-center">
+                    <div id="stat-hours" class="text-2xl sm:text-3xl font-black text-emerald-400 font-display">131,472</div>
+                    <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-1">Saat</div>
+                </div>
+                <div class="neu-inset p-4 rounded-2xl text-center">
+                    <div id="stat-minutes" class="text-2xl sm:text-3xl font-black text-amber-400 font-display">7,888,320</div>
+                    <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-1">Dakika</div>
+                </div>
+                <div class="neu-inset p-4 rounded-2xl text-center">
+                    <div id="stat-seconds" class="text-2xl sm:text-3xl font-black text-rose-400 font-display">0</div>
+                    <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-1">Saniye</div>
+                </div>
+                <div class="neu-inset p-4 rounded-2xl text-center">
+                    <div id="stat-heartbeats" class="text-2xl sm:text-3xl font-black text-cyan-300 font-display">0</div>
+                    <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-1">Kalp Atışı (~75bpm)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arcade Mini-Game: Bad Boys Pursuit -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-8 border-purple-500/20 space-y-6">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/10 pb-4">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad text-purple-400"></i>
+                        Mini-Oyun: Bad Boys Pursuit
+                    </h3>
+                    <p class="text-slate-400 text-xs sm:text-sm">30 saniye içinde cam fanuslarda beliren roketleri ve rozetleri topla, en yüksek skoru yap!</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="neu-inset px-4 py-2 rounded-xl text-xs font-mono text-amber-400">
+                        Skor: <span id="game-score" class="font-bold text-base">0</span>
+                    </div>
+                    <div class="neu-inset px-4 py-2 rounded-xl text-xs font-mono text-cyan-400">
+                        Süre: <span id="game-timer" class="font-bold text-base">30</span>s
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arcade Playfield Arena -->
+            <div id="arcade-arena" class="relative w-full h-80 neu-inset rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center">
+                <div id="arcade-start-overlay" class="text-center space-y-4 p-6 z-10">
+                    <div class="w-16 h-16 rounded-2xl neu-button mx-auto flex items-center justify-center text-purple-400 text-3xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Hazır mısın Kuzey?</h4>
+                    <button onclick="ArcadeGame.start()" class="neu-button px-8 py-3 rounded-2xl text-purple-300 font-extrabold tracking-wide border border-purple-500/40 hover:text-white cursor-pointer">
+                        Oyunu Başlat!
+                    </button>
+                </div>
+                <!-- Dynamic target elements spawn inside #arcade-arena via JS -->
+            </div>
+        </section>
+
+        <!-- Two Column Layout: Scratch Card + Soundboard -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Scratch To Reveal Message Card -->
+            <section class="glass-panel rounded-3xl p-6 sm:p-8 border-cyan-500/20 space-y-4 relative">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-hand-sparkles text-cyan-400"></i>
+                    Kazı-Kazan Gizli Mesaj Kartı
+                </h3>
+                <p class="text-slate-400 text-xs">Fareyle veya parmağınla gri katmanı kazıyarak sürpriz mesajı aç!</p>
+
+                <div class="relative w-full h-64 neu-inset rounded-2xl overflow-hidden flex items-center justify-center p-6 text-center">
+                    <!-- Hidden Birthday Text Beneath -->
+                    <div class="space-y-3 z-0">
+                        <i class="fa-solid fa-quote-left text-2xl text-cyan-400/40"></i>
+                        <p class="text-slate-200 text-sm sm:text-base font-semibold leading-relaxed">
+                            "Kuzey, yeni yaşında karşına çıkacak tüm engelleri birer birer aşacağından şüphemiz yok. Cesaretin, neşen ve başarın daim olsun. İyi ki doğdun dostum!"
+                        </p>
+                        <div class="text-xs font-bold text-cyan-400">— Ekip & Sevenlerin</div>
+                    </div>
+
+                    <!-- Scratch Overlay Canvas -->
+                    <canvas id="canvas-scratch" class="absolute inset-0 z-10 cursor-pointer"></canvas>
+                </div>
+            </section>
+
+            <!-- Web Audio API Interactive Soundboard -->
+            <section class="glass-panel rounded-3xl p-6 sm:p-8 border-emerald-500/20 space-y-4">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-emerald-400"></i>
+                    Sentezör Ses Tahtası (Soundboard)
+                </h3>
+                <p class="text-slate-400 text-xs">Web Audio API ile anlık üretilen özel ses efektlerini deneyimle!</p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <button onclick="SoundSynth.playLaser()" class="neu-button p-4 rounded-2xl text-xs font-bold text-cyan-300 flex flex-col items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-gun text-lg"></i> Laser Blast
+                    </button>
+                    <button onclick="SoundSynth.playJingle()" class="neu-button p-4 rounded-2xl text-xs font-bold text-amber-300 flex flex-col items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-music text-lg"></i> Doğum Günü Melodisi
+                    </button>
+                    <button onclick="SoundSynth.playExplosion()" class="neu-button p-4 rounded-2xl text-xs font-bold text-rose-300 flex flex-col items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-bomb text-lg"></i> Patlama Efekti
+                    </button>
+                    <button onclick="SoundSynth.playCoin()" class="neu-button p-4 rounded-2xl text-xs font-bold text-emerald-300 flex flex-col items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-coins text-lg"></i> Coin Sesi
+                    </button>
+                    <button onclick="SoundSynth.playPowerup()" class="neu-button p-4 rounded-2xl text-xs font-bold text-purple-300 flex flex-col items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-bolt text-lg"></i> Power Up
+                    </button>
+                    <button onclick="SoundSynth.playApplause()" class="neu-button p-4 rounded-2xl text-xs font-bold text-blue-300 flex flex-col items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-hands-clapping text-lg"></i> Alkış Efekti
+                    </button>
+                </div>
+            </section>
+
         </div>
 
-        <!-- Hero Card (Neu-Glass + 3D Tilt) -->
-        <div id="main-card" class="tilt-card neu-glass w-full rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden transition-transform duration-200 ease-out border border-white/20">
-            
-            <!-- Glowing Accent Line -->
-            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-bold mb-6 shadow-inner">
-                <i class="fa-solid fa-cake-candles text-cyan-400"></i> 13 Ekim 2011 — Bugün 15 Yaşında!
-            </div>
-
-            <!-- Title -->
-            <h1 class="heading-font text-4xl sm:text-7xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-white via-slate-200 to-cyan-300 bg-clip-text text-transparent drop-shadow-lg">
-                İYİ Kİ DOĞDUN KUZEY!
-            </h1>
-
-            <p class="text-slate-400 text-base sm:text-xl max-w-xl mx-auto mb-8 font-light leading-relaxed">
-                Yepyeni bir yaş, sınırsız maceralar ve unutulmaz anılar seni bekliyor. Bugün senin günün, gururla 15!
-            </p>
-
-            <!-- Live Age / Time Counter Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
-                <div class="neu-glass p-4 rounded-2xl border border-white/10">
-                    <div id="years-old" class="text-2xl sm:text-3xl font-extrabold text-cyan-400 heading-font">15</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-widest mt-1">Yaş</div>
-                </div>
-                <div class="neu-glass p-4 rounded-2xl border border-white/10">
-                    <div id="days-lived" class="text-2xl sm:text-3xl font-extrabold text-purple-400 heading-font">5,475+</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-widest mt-1">Gün</div>
-                </div>
-                <div class="neu-glass p-4 rounded-2xl border border-white/10">
-                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 heading-font">365</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-widest mt-1">Yeni Gün</div>
-                </div>
-                <div class="neu-glass p-4 rounded-2xl border border-white/10">
-                    <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 heading-font">∞</div>
-                    <div class="text-xs text-slate-400 uppercase tracking-widest mt-1">Başarı</div>
-                </div>
-            </div>
-
-            <!-- Interactive Action Area -->
-            <div class="flex flex-wrap items-center justify-center gap-4">
-                <button onclick="triggerCelebration()" class="neu-button px-8 py-4 rounded-2xl text-cyan-300 font-bold tracking-wide flex items-center gap-3 border border-cyan-500/30 group cursor-pointer">
-                    <i class="fa-solid fa-wand-magic-sparkles text-cyan-400 group-hover:rotate-12 transition-transform"></i>
-                    Kutlamayı Ateşle!
-                </button>
-                <button onclick="playGreetingSound()" class="neu-button px-6 py-4 rounded-2xl text-slate-300 font-semibold tracking-wide flex items-center gap-2 border border-white/10 hover:text-white cursor-pointer">
-                    <i class="fa-solid fa-bolt text-amber-400"></i> Özel Mesaj
-                </button>
-            </div>
-
-            <!-- Hidden Greeting Popup Note -->
-            <div id="greeting-note" class="hidden mt-6 p-6 rounded-2xl bg-slate-900/80 border border-cyan-500/30 text-slate-200 text-sm sm:text-base animate-fade-in shadow-2xl">
-                <p class="italic">"Kuzey, hayatının her anında zirveyi hedeflediğin, arkana hiç bakmadan tutkuyla yürüdüğün harika bir yaş dilerim. İyi ki varsın dostum!"</p>
-            </div>
-
-        </div>
-
-        <!-- Footer Credits -->
-        <footer class="mt-8 text-center text-xs text-slate-500 tracking-wider">
-            Designed with <span class="text-rose-500">♥</span> for Kuzey • 2026
+        <!-- Footer -->
+        <footer class="text-center text-xs text-slate-500 py-8 border-t border-white/10 space-y-2">
+            <div>Designed for Kuzey • 13 Ekim 2011 - 13 Ekim 2026</div>
+            <div class="text-[10px] text-slate-600">Glassmorphism & Neumorphic Engine Version 3.5 • 60 FPS Canvas Physics</div>
         </footer>
 
-    </main>
+    </div>
 
-    <!-- Canvas for Particle Fireworks / Confetti -->
-    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+    <!-- YouTube IFrame Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
 
-    <!-- JavaScript Engine -->
     <script>
-        // 1. 3D Tilt Card Effect
-        const card = document.getElementById('main-card');
-        
-        document.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            const rotateX = (-y / rect.height) * 12;
-            const rotateY = (x / rect.width) * 12;
-            
-            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
-        });
+        // Global Application State
+        const AppState = {
+            audioPlaying: false,
+            muted: false,
+            volume: 80,
+            ytPlayer: null,
+            micActive: false,
+            score: 0
+        };
 
-        document.addEventListener('mouseleave', () => {
-            card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            card.style.transition = 'transform 0.5s ease-out';
-        });
+        // -------------------------------------------------------------
+        // 1. YOUTUBE IFRAME PLAYER API & CUSTOM GLASS CONTROLLER
+        // -------------------------------------------------------------
+        function onYouTubeIframeAPIReady() {
+            AppState.ytPlayer = new YT.Player('youtube-player', {
+                height: '0',
+                width: '0',
+                videoId: 'THh5ykVxpSg',
+                playerVars: {
+                    'autoplay': 1,
+                    'loop': 1,
+                    'playlist': 'THh5ykVxpSg',
+                    'controls': 0,
+                    'disablekb': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
 
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = 'none';
-        });
+        function onPlayerReady(event) {
+            document.getElementById('audio-status-text').innerText = 'Kuzey Özel Parça Hazır';
+            event.target.setVolume(AppState.volume);
+            // Attempt autoplay
+            event.target.playVideo();
+        }
 
-        // 2. Audio Toggle Logic
-        let isMuted = false;
-        function toggleAudio() {
-            const iframe = document.querySelector('#audio-container iframe');
-            // Simulating audio toggle via postMessage to YouTube iframe API
-            const btn = document.getElementById('audio-btn');
-            if (!isMuted) {
-                iframe.src = iframe.src.replace('&autoplay=1', '&mute=1');
-                btn.innerHTML = '<i class="fa-solid fa-volume-xmark mr-1"></i> Ses Kapalı';
-                isMuted = true;
+        function onPlayerStateChange(event) {
+            const btnIcon = document.getElementById('icon-play-pause');
+            const statusText = document.getElementById('audio-status-text');
+
+            if (event.data === YT.PlayerState.PLAYING) {
+                AppState.audioPlaying = true;
+                btnIcon.className = 'fa-solid fa-pause text-lg';
+                statusText.innerText = 'Çalıyor: Bad Boys Theme';
+                VisualizerEngine.start();
             } else {
-                iframe.src = iframe.src.replace('&mute=1', '&autoplay=1');
-                btn.innerHTML = '<i class="fa-solid fa-volume-high mr-1"></i> Ses Açık';
-                isMuted = false;
+                AppState.audioPlaying = false;
+                btnIcon.className = 'fa-solid fa-play text-lg';
+                statusText.innerText = 'Duraklatıldı';
             }
         }
 
-        // 3. Special Greeting Note Toggle
-        function playGreetingSound() {
-            const note = document.getElementById('greeting-note');
-            note.classList.toggle('hidden');
-        }
-
-        // 4. Advanced Particle Celebration Engine (Fireworks / Confetti)
-        const canvas = document.getElementById('confetti-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 6 + 2;
-                this.color = ['#22d3ee', '#a855f7', '#34d399', '#f43f5e', '#fbbf24'][Math.floor(Math.random() * 5)];
-                this.angle = Math.random() * Math.PI * 2;
-                this.speed = Math.random() * 12 + 4;
-                this.friction = 0.94;
-                this.gravity = 0.35;
-                this.alpha = 1;
-                this.decay = Math.random() * 0.015 + 0.008;
-            }
-            update() {
-                this.speed *= this.friction;
-                this.x += Math.cos(this.angle) * this.speed;
-                this.y += Math.sin(this.angle) * this.speed + this.gravity;
-                this.alpha -= this.decay;
-            }
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = Math.max(0, this.alpha);
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.shadowBlur = 15;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        function triggerCelebration() {
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            
-            // Spawn 150 particles for massive burst
-            for (let i = 0; i < 150; i++) {
-                particles.push(new Particle(centerX, centerY));
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = particles.length - 1; i >= 0; i--) {
-                particles[i].update();
-                particles[i].draw();
-                if (particles[i].alpha <= 0) {
-                    particles.splice(i, 1);
+        const AudioController = {
+            togglePlay() {
+                if (!AppState.ytPlayer) return;
+                if (AppState.audioPlaying) {
+                    AppState.ytPlayer.pauseVideo();
+                } else {
+                    AppState.ytPlayer.playVideo();
+                }
+            },
+            toggleMute() {
+                if (!AppState.ytPlayer) return;
+                const icon = document.getElementById('icon-mute');
+                if (AppState.muted) {
+                    AppState.ytPlayer.unMute();
+                    AppState.muted = false;
+                    icon.className = 'fa-solid fa-volume-high';
+                } else {
+                    AppState.ytPlayer.mute();
+                    AppState.muted = true;
+                    icon.className = 'fa-solid fa-volume-xmark text-rose-400';
+                }
+            },
+            setVolume(val) {
+                AppState.volume = val;
+                if (AppState.ytPlayer && AppState.ytPlayer.setVolume) {
+                    AppState.ytPlayer.setVolume(val);
+                }
+            },
+            restartTrack() {
+                if (AppState.ytPlayer && AppState.ytPlayer.seekTo) {
+                    AppState.ytPlayer.seekTo(0);
+                    AppState.ytPlayer.playVideo();
                 }
             }
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
+        };
+
+        // -------------------------------------------------------------
+        // 2. WEB AUDIO API SYNTHESIZER (SOUND EFFECT GENERATOR)
+        // -------------------------------------------------------------
+        const SoundSynth = {
+            ctx: null,
+            initCtx() {
+                if (!this.ctx) {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            },
+            playLaser() {
+                this.initCtx();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.2);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.2);
+            },
+            playExplosion() {
+                this.initCtx();
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(120, now);
+                osc.frequency.exponentialRampToValueAtTime(20, now + 0.4);
+                gain.gain.setValueAtTime(0.5, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.4);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            },
+            playCoin() {
+                this.initCtx();
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(987.77, now); // B5
+                osc.frequency.setValueAtTime(1318.51, now + 0.08); // E6
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.3);
+            },
+            playPowerup() {
+                this.initCtx();
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(220, now);
+                osc.frequency.linearRampToValueAtTime(880, now + 0.3);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.3);
+            },
+            playApplause() {
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => this.playCoin(), i * 60);
+                }
+            },
+            playJingle() {
+                this.initCtx();
+                const notes = [261.63, 261.63, 293.66, 261.63, 349.23, 329.63];
+                const durations = [0.2, 0.2, 0.4, 0.4, 0.4, 0.8];
+                let time = this.ctx.currentTime;
+
+                notes.forEach((freq, idx) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.25, time);
+                    gain.gain.linearRampToValueAtTime(0.01, time + durations[idx]);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(time);
+                    osc.stop(time + durations[idx]);
+                    time += durations[idx] + 0.05;
+                });
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 3. AUDIO VISUALIZER CANVAS SIMULATION
+        // -------------------------------------------------------------
+        const VisualizerEngine = {
+            canvas: null,
+            ctx: null,
+            animId: null,
+            init() {
+                this.canvas = document.getElementById('canvas-visualizer');
+                this.ctx = this.canvas.getContext('2d');
+            },
+            start() {
+                if (this.animId) cancelAnimationFrame(this.animId);
+                const draw = () => {
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    const bars = 10;
+                    const barWidth = this.canvas.width / bars - 2;
+
+                    for (let i = 0; i < bars; i++) {
+                        const h = AppState.audioPlaying ? Math.random() * (this.canvas.height - 6) + 4 : 4;
+                        const x = i * (barWidth + 2);
+                        const y = this.canvas.height - h;
+
+                        const gradient = this.ctx.createLinearGradient(0, y, 0, this.canvas.height);
+                        gradient.addColorStop(0, '#00f3ff');
+                        gradient.addColorStop(1, '#b026ff');
+
+                        this.ctx.fillStyle = gradient;
+                        this.ctx.fillRect(x, y, barWidth, h);
+                    }
+                    this.animId = requestAnimationFrame(draw);
+                };
+                draw();
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 4. INTERACTIVE 3D TILT CARD ENGINE
+        // -------------------------------------------------------------
+        const TiltEngine = {
+            init() {
+                const card = document.getElementById('hero-tilt-card');
+                if (!card) return;
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    const rotX = (-y / rect.height) * 15;
+                    const rotY = (x / rect.width) * 15;
+
+                    card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    card.style.transition = 'transform 0.5s ease-out';
+                });
+
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'none';
+                });
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 5. CANDLE SYSTEM & MICROPHONE BLOW-OUT DETECTION
+        // -------------------------------------------------------------
+        const CandleSystem = {
+            total: 15,
+            litCount: 15,
+            candles: [],
+            init() {
+                const container = document.getElementById('candles-container');
+                container.innerHTML = '';
+                this.candles = [];
+                this.litCount = this.total;
+
+                for (let i = 0; i < this.total; i++) {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'relative flex flex-col items-center cursor-pointer group';
+                    wrap.onclick = () => this.extinguish(i);
+
+                    const flame = document.createElement('div');
+                    flame.id = `flame-${i}`;
+                    flame.className = 'w-3.5 h-6 candle-flame mb-1 transition-opacity duration-300';
+
+                    const stick = document.createElement('div');
+                    stick.className = 'w-2 h-10 rounded-t bg-gradient-to-b from-cyan-300 via-pink-400 to-amber-300 border border-white/20 shadow-md';
+
+                    wrap.appendChild(flame);
+                    wrap.appendChild(stick);
+                    container.appendChild(wrap);
+
+                    this.candles.push({ lit: true, element: flame, wrap });
+                }
+                this.updateCounter();
+            },
+            extinguish(index) {
+                if (this.candles[index] && this.candles[index].lit) {
+                    this.candles[index].lit = false;
+                    this.candles[index].element.style.opacity = '0';
+                    this.litCount--;
+                    this.updateCounter();
+                    SoundSynth.playLaser();
+
+                    // Spawn smoke particle element
+                    const smoke = document.createElement('div');
+                    smoke.className = 'candle-smoke';
+                    this.candles[index].wrap.appendChild(smoke);
+                    setTimeout(() => smoke.remove(), 1500);
+
+                    if (this.litCount === 0) {
+                        FireworksEngine.burstGroup();
+                        ConfettiEngine.launchConfettiStorm();
+                        SoundSynth.playApplause();
+                    }
+                }
+            },
+            relightAll() {
+                this.candles.forEach(c => {
+                    c.lit = true;
+                    c.element.style.opacity = '1';
+                });
+                this.litCount = this.total;
+                this.updateCounter();
+                SoundSynth.playPowerup();
+            },
+            updateCounter() {
+                document.getElementById('candles-counter').innerText = `${this.litCount} / ${this.total} Yanıyor`;
+            },
+            async enableMicrophone() {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    const micContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const micSource = micContext.createMediaStreamSource(stream);
+                    const analyzer = micContext.createAnalyser();
+                    analyzer.fftSize = 256;
+                    micSource.connect(analyzer);
+
+                    document.getElementById('btn-mic-enable').classList.add('hidden');
+                    document.getElementById('mic-status-badge').classList.remove('hidden');
+
+                    const dataArray = new Uint8Array(analyzer.frequencyBinCount);
+                    const checkBlow = () => {
+                        analyzer.getByteFrequencyData(dataArray);
+                        let sum = 0;
+                        for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+                        const average = sum / dataArray.length;
+
+                        // Threshold for blowing loudness
+                        if (average > 65 && this.litCount > 0) {
+                            // Extinguish random candle
+                            const litCandles = this.candles.map((c, idx) => c.lit ? idx : null).filter(v => v !== null);
+                            if (litCandles.length > 0) {
+                                const targetIdx = litCandles[Math.floor(Math.random() * litCandles.length)];
+                                this.extinguish(targetIdx);
+                            }
+                        }
+                        requestAnimationFrame(checkBlow);
+                    };
+                    checkBlow();
+                } catch (err) {
+                    alert('Mikrofon erişimi izni alınamadı.');
+                }
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 6. CANVASES: 3D ORBIT CONSTELLATION BACKGROUND ENGINE
+        // -------------------------------------------------------------
+        const OrbitBgEngine = {
+            canvas: null,
+            ctx: null,
+            particles: [],
+            numParticles: 70,
+            mouse: { x: null, y: null, radius: 150 },
+
+            init() {
+                this.canvas = document.getElementById('canvas-orbit');
+                this.ctx = this.canvas.getContext('2d');
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+
+                window.addEventListener('mousemove', (e) => {
+                    this.mouse.x = e.clientX;
+                    this.mouse.y = e.clientY;
+                });
+
+                this.particles = [];
+                for (let i = 0; i < this.numParticles; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * 1.2,
+                        vy: (Math.random() - 0.5) * 1.2,
+                        radius: Math.random() * 2.5 + 1,
+                        color: ['#00f3ff', '#b026ff', '#3b82f6'][Math.floor(Math.random() * 3)]
+                    });
+                }
+                this.animate();
+            },
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            },
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                this.particles.forEach((p, idx) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
+
+                    // Mouse attraction / bounce
+                    if (this.mouse.x !== null) {
+                        const dx = this.mouse.x - p.x;
+                        const dy = this.mouse.y - p.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < this.mouse.radius) {
+                            p.x -= (dx / dist) * 2;
+                            p.y -= (dy / dist) * 2;
+                        }
+                    }
+
+                    // Render Particle
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = p.color;
+                    this.ctx.shadowBlur = 10;
+                    this.ctx.shadowColor = p.color;
+                    this.ctx.fill();
+
+                    // Connect lines
+                    for (let j = idx + 1; j < this.particles.length; j++) {
+                        const p2 = this.particles[j];
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(p.x, p.y);
+                            this.ctx.lineTo(p2.x, p2.y);
+                            this.ctx.strokeStyle = `rgba(0, 243, 255, ${1 - dist / 120})`;
+                            this.ctx.lineWidth = 0.5;
+                            this.ctx.stroke();
+                        }
+                    }
+                });
+
+                requestAnimationFrame(() => this.animate());
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 7. FIREWORKS & CONFETTI STORM ENGINES
+        // -------------------------------------------------------------
+        const FireworksEngine = {
+            canvas: null,
+            ctx: null,
+            particles: [],
+            init() {
+                this.canvas = document.getElementById('canvas-fireworks');
+                this.ctx = this.canvas.getContext('2d');
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.animate();
+            },
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            },
+            burst(x, y) {
+                SoundSynth.playExplosion();
+                const count = 80;
+                const colors = ['#00f3ff', '#b026ff', '#ffd700', '#ff007f', '#00ff66'];
+                for (let i = 0; i < count; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 10 + 2;
+                    this.particles.push({
+                        x, y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        radius: Math.random() * 3 + 1.5,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        alpha: 1,
+                        decay: Math.random() * 0.02 + 0.01
+                    });
+                }
+            },
+            burstGroup() {
+                const w = this.canvas.width;
+                const h = this.canvas.height;
+                this.burst(w * 0.3, h * 0.3);
+                setTimeout(() => this.burst(w * 0.7, h * 0.3), 200);
+                setTimeout(() => this.burst(w * 0.5, h * 0.4), 400);
+            },
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                for (let i = this.particles.length - 1; i >= 0; i--) {
+                    const p = this.particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.15; // Gravity
+                    p.alpha -= p.decay;
+
+                    if (p.alpha <= 0) {
+                        this.particles.splice(i, 1);
+                        continue;
+                    }
+
+                    this.ctx.save();
+                    this.ctx.globalAlpha = p.alpha;
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = p.color;
+                    this.ctx.shadowBlur = 12;
+                    this.ctx.shadowColor = p.color;
+                    this.ctx.fill();
+                    this.ctx.restore();
+                }
+                requestAnimationFrame(() => this.animate());
+            }
+        };
+
+        const ConfettiEngine = {
+            canvas: null,
+            ctx: null,
+            pieces: [],
+            init() {
+                this.canvas = document.getElementById('canvas-confetti');
+                this.ctx = this.canvas.getContext('2d');
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.animate();
+            },
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            },
+            launchConfettiStorm() {
+                SoundSynth.playPowerup();
+                const colors = ['#00f3ff', '#b026ff', '#ffd700', '#ffffff', '#ec4899'];
+                for (let i = 0; i < 120; i++) {
+                    this.pieces.push({
+                        x: Math.random() * this.canvas.width,
+                        y: -20,
+                        w: Math.random() * 10 + 6,
+                        h: Math.random() * 6 + 4,
+                        vx: (Math.random() - 0.5) * 4,
+                        vy: Math.random() * 6 + 3,
+                        rotation: Math.random() * 360,
+                        rotSpeed: (Math.random() - 0.5) * 10,
+                        color: colors[Math.floor(Math.random() * colors.length)]
+                    });
+                }
+            },
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                for (let i = this.pieces.length - 1; i >= 0; i--) {
+                    const p = this.pieces[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.rotation += p.rotSpeed;
+
+                    if (p.y > this.canvas.height) {
+                        this.pieces.splice(i, 1);
+                        continue;
+                    }
+
+                    this.ctx.save();
+                    this.ctx.translate(p.x, p.y);
+                    this.ctx.rotate((p.rotation * Math.PI) / 180);
+                    this.ctx.fillStyle = p.color;
+                    this.ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    this.ctx.restore();
+                }
+                requestAnimationFrame(() => this.animate());
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 8. LIVE TIME CAPSULE COUNTER ENGINE
+        // -------------------------------------------------------------
+        const TimeCapsule = {
+            birthDate: new Date(2011, 9, 13, 0, 0, 0), // October 13, 2011
+            init() {
+                setInterval(() => this.update(), 1000);
+                this.update();
+            },
+            update() {
+                const now = new Date();
+                const diffMs = now - this.birthDate;
+
+                const seconds = Math.floor(diffMs / 1000);
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(minutes / 60);
+                const days = Math.floor(hours / 24);
+                const years = (days / 365.25).toFixed(1);
+                const heartbeats = Math.floor(minutes * 75); // Avg 75 bpm
+
+                document.getElementById('stat-years').innerText = years;
+                document.getElementById('stat-days').innerText = days.toLocaleString();
+                document.getElementById('stat-hours').innerText = hours.toLocaleString();
+                document.getElementById('stat-minutes').innerText = minutes.toLocaleString();
+                document.getElementById('stat-seconds').innerText = seconds.toLocaleString();
+                document.getElementById('stat-heartbeats').innerText = heartbeats.toLocaleString();
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 9. ARCADE MINI-GAME: BAD BOYS PURSUIT
+        // -------------------------------------------------------------
+        const ArcadeGame = {
+            arena: null,
+            timer: 30,
+            score: 0,
+            interval: null,
+            activeTarget: null,
+
+            start() {
+                this.arena = document.getElementById('arcade-arena');
+                document.getElementById('arcade-start-overlay').classList.add('hidden');
+                this.score = 0;
+                this.timer = 30;
+                document.getElementById('game-score').innerText = '0';
+                document.getElementById('game-timer').innerText = '30';
+
+                this.interval = setInterval(() => {
+                    this.timer--;
+                    document.getElementById('game-timer').innerText = this.timer;
+                    if (this.timer <= 0) {
+                        this.end();
+                    }
+                }, 1000);
+
+                this.spawnTarget();
+            },
+            spawnTarget() {
+                if (this.activeTarget) this.activeTarget.remove();
+                if (this.timer <= 0) return;
+
+                const target = document.createElement('div');
+                target.className = 'absolute w-14 h-14 neu-button rounded-2xl flex items-center justify-center text-cyan-400 text-2xl cursor-pointer transform hover:scale-110 transition border border-cyan-500/40 shadow-lg';
+                
+                const icons = ['fa-shield-halved', 'fa-rocket', 'fa-crown', 'fa-gem', 'fa-bolt'];
+                const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                target.innerHTML = `<i class="fa-solid ${randomIcon}"></i>`;
+
+                const maxX = this.arena.clientWidth - 70;
+                const maxY = this.arena.clientHeight - 70;
+                const posX = Math.random() * maxX;
+                const posY = Math.random() * maxY;
+
+                target.style.left = `${posX}px`;
+                target.style.top = `${posY}px`;
+
+                target.onclick = () => {
+                    this.score += 10;
+                    document.getElementById('game-score').innerText = this.score;
+                    SoundSynth.playCoin();
+                    ConfettiEngine.launchConfettiStorm();
+                    this.spawnTarget();
+                };
+
+                this.arena.appendChild(target);
+                this.activeTarget = target;
+            },
+            end() {
+                clearInterval(this.interval);
+                if (this.activeTarget) this.activeTarget.remove();
+
+                const overlay = document.getElementById('arcade-start-overlay');
+                overlay.classList.remove('hidden');
+                overlay.innerHTML = `
+                    <div class="w-16 h-16 rounded-2xl neu-button mx-auto flex items-center justify-center text-amber-400 text-3xl">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h4 class="text-xl font-black text-white">Oyun Bitti! Skorun: ${this.score}</h4>
+                    <p class="text-xs text-slate-300">Harika reaksiyon hızı Kuzey!</p>
+                    <button onclick="ArcadeGame.start()" class="neu-button px-8 py-3 rounded-2xl text-cyan-300 font-extrabold tracking-wide border border-cyan-500/40 cursor-pointer">
+                        Tekrar Oyna
+                    </button>
+                `;
+                SoundSynth.playApplause();
+            }
+        };
+
+        // -------------------------------------------------------------
+        // 10. SCRATCH TO REVEAL CARD ENGINE
+        // -------------------------------------------------------------
+        const ScratchCard = {
+            canvas: null,
+            ctx: null,
+            isDrawing: false,
+
+            init() {
+                this.canvas = document.getElementById('canvas-scratch');
+                if (!this.canvas) return;
+                this.ctx = this.canvas.getContext('2d');
+
+                const parent = this.canvas.parentElement;
+                this.canvas.width = parent.clientWidth;
+                this.canvas.height = parent.clientHeight;
+
+                // Fill with glass Scratch Layer
+                this.ctx.fillStyle = '#1e293b';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Add text guidance
+                this.ctx.font = 'bold 16px Outfit';
+                this.ctx.fillStyle = '#00f3ff';
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText('✨ BURAYI KAZI VE MESAJI OKU ✨', this.canvas.width / 2, this.canvas.height / 2);
+
+                const scratch = (x, y) => {
+                    this.ctx.globalCompositeOperation = 'destination-out';
+                    this.ctx.beginPath();
+                    this.ctx.arc(x, y, 25, 0, Math.PI * 2);
+                    this.ctx.fill();
+                };
+
+                const getPos = (e) => {
+                    const rect = this.canvas.getBoundingClientRect();
+                    return {
+                        x: (e.clientX || e.touches[0].clientX) - rect.left,
+                        y: (e.clientY || e.touches[0].clientY) - rect.top
+                    };
+                };
+
+                this.canvas.addEventListener('mousedown', (e) => { this.isDrawing = true; const p = getPos(e); scratch(p.x, p.y); });
+                this.canvas.addEventListener('mousemove', (e) => { if (this.isDrawing) { const p = getPos(e); scratch(p.x, p.y); } });
+                this.canvas.addEventListener('mouseup', () => { this.isDrawing = false; });
+
+                this.canvas.addEventListener('touchstart', (e) => { this.isDrawing = true; const p = getPos(e); scratch(p.x, p.y); });
+                this.canvas.addEventListener('touchmove', (e) => { if (this.isDrawing) { const p = getPos(e); scratch(p.x, p.y); } });
+                this.canvas.addEventListener('touchend', () => { this.isDrawing = false; });
+            }
+        };
+
+        // -------------------------------------------------------------
+        // APPLICATION INITIALIZATION ENTRYPOINT
+        // -------------------------------------------------------------
+        window.onload = function () {
+            VisualizerEngine.init();
+            TiltEngine.init();
+            CandleSystem.init();
+            OrbitBgEngine.init();
+            FireworksEngine.init();
+            ConfettiEngine.init();
+            TimeCapsule.init();
+            ScratchCard.init();
+
+            // Initial Launch Celebration
+            setTimeout(() => {
+                FireworksEngine.burstGroup();
+                ConfettiEngine.launchConfettiStorm();
+            }, 600);
+        };
     </script>
 </body>
 </html>
